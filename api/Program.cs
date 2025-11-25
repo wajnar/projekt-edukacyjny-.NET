@@ -15,10 +15,10 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-if (app.Environment.isDevelopment())
+if (app.Environment.IsDevelopment())
 {
- app.useSwagger();
- app.useSwaggerUI();   
+ app.UseSwagger();
+ app.UseSwaggerUI();   
 }
 
 app.MapGet("/", () =>
