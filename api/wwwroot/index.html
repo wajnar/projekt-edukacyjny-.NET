@@ -75,6 +75,8 @@
       <option value="2">Ważny</option>
       <option value="3">Pilny</option>
     </select>
+
+    <input type="datetime-local" name="todo-deadline" id="todo-deadline">
     <button type="submit">Dodaj</button>
   </form>
 
@@ -126,6 +128,13 @@
         meta.className = 'todo-meta';
         if (todo.createdAt) {
           meta.textContent = 'Utworzono: ' + new Date(todo.createdAt).toLocaleString();
+        }
+
+        if (todo.deadline){
+          const d = document.createElement('div')
+          d.className = "todo-deadline";
+          d.textContent = "Do: " + new Date(todo.deadline).toLocaleString();
+          main.append(d)
         }
 
         const pr = document.createElement('div');
@@ -183,7 +192,8 @@
           body: JSON.stringify({
             title: title,
             isDone: false,
-            priority: parseInt(document.getElementById('todo-priority').value)
+            priority: parseInt(document.getElementById('todo-priority').value),
+            deadline: document.getElementById('todo-deadline').value || null
           })
         });
         if (!res.ok) {
