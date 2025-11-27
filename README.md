@@ -34,3 +34,18 @@ Projekt przeznaczony jest jako **ćwiczenie dla technikum informatycznego**.
    ```bash
    git clone https://github.com/adrianflak/restapi_dotnet_priority.git
    cd restapi_dotnet_priority
+   docker-compose build
+   docker-compose up -d
+
+
+2. **Utwórz bazę danych:**
+
+   sudo docker-compose exec db psql -U demo -d demo
+   
+   CREATE TABLE "Todos" (
+        "Id" SERIAL PRIMARY KEY,
+        "Title" TEXT NOT NULL,
+        "IsDone" BOOLEAN NOT NULL,
+        "CreatedAt" TIMESTAMPTZ NOT NULL
+    );
+   ALTER TABLE "Todos" ADD COLUMN "Priority" INT DEFAULT 1;
