@@ -134,7 +134,7 @@
           const d = document.createElement('div')
           d.className = "todo-deadline";
           d.textContent = "Do: " + new Date(todo.deadline).toLocaleString();
-          main.append(d)
+          main.appendChild(d);
         }
 
         const pr = document.createElement('div');

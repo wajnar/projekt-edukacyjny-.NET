@@ -7,5 +7,6 @@ public class TodoItem
     public bool IsDone {get;set;}
     public DateTime CreatedAt {get;set;} = DateTime.UtcNow;
     public DateTime ? Deadline {get;set;}
+    
     public int Priority {get; set;} = 1;
 }
