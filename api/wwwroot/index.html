@@ -45,6 +45,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      flex-wrap: wrap;
     }
     .todo-title.done {
       text-decoration: line-through;
@@ -53,6 +54,10 @@
     .todo-meta {
       font-size: 0.8rem;
       color: #999;
+    }
+    .priority {
+      font-size: 0.8rem;
+      font-weight: bold;
     }
     .actions {
       display: flex;
@@ -64,11 +69,11 @@
   <h1>TODO – .NET + Docker + Postgres</h1>
 
   <form id="todo-form">
+    <input type="text" id="todo-title" placeholder="Nowe zadanie.." required />
     <select id="todo-priority">
-      <input type="text" id="todo-title" placeholder="Nowe zadanie.." required />
-        <option value="1">Normalny</option>
-        <option value="2">Ważny</option>
-        <option value="3">Pilny</option>
+      <option value="1">Normalny</option>
+      <option value="2">Ważny</option>
+      <option value="3">Pilny</option>
     </select>
     <button type="submit">Dodaj</button>
   </form>
@@ -123,16 +128,14 @@
           meta.textContent = 'Utworzono: ' + new Date(todo.createdAt).toLocaleString();
         }
 
-        const pr = document.createElement('div')
-        pr.className = 'priority'
+        const pr = document.createElement('div');
+        pr.className = 'priority';
         pr.textContent = 'Priorytet: ' + todo.priority;
-
 
         main.appendChild(checkbox);
         main.appendChild(title);
         main.appendChild(meta);
         main.appendChild(pr);
-
 
         const actions = document.createElement('div');
         actions.className = 'actions';
