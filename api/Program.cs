@@ -53,6 +53,11 @@ app.MapGet("/todos/{id:int}", async (int id, AppDbContext db) =>
 app.MapPost("/todos", async (TodoItem dto, AppDbContext db) =>
 {
     dto.CreatedAt = DateTime.UtcNow;
+
+    if (dto.Deadline.HasValue){
+        dto.Deadline = DateTime.SpecifyKind(dto.Deadline.Value, DateTimeKind.Utc);
+    }
+
     db.Todos.Add(dto);
     await db.SaveChangesAsync();
     return Results.Created($"/todos/{dto.Id}", dto);
