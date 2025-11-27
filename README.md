@@ -40,8 +40,9 @@ Projekt przeznaczony jest jako **ćwiczenie dla technikum informatycznego**.
 
 2. **Utwórz bazę danych:**
 
+   ```bash
    sudo docker-compose exec db psql -U demo -d demo
-   
+
    CREATE TABLE "Todos" (
         "Id" SERIAL PRIMARY KEY,
         "Title" TEXT NOT NULL,
