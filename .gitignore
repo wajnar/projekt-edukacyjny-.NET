@@ -1,0 +1,5 @@
+bin/
+obj/
+/api/obj
+.user
+/.vs
